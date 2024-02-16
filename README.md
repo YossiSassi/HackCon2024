@@ -7,11 +7,11 @@ sc.exe enumdepend rpcss 32000 | sls 'display_name' | Measure-Object
 <br>
 Fix Clock Skew remotely (RPC not available):
 
-$varDate = Get-Date; Invoke-Command -ComputerName <IP>      -ScriptBlock {set-date $using:varDate} -Authentication Negotiate
+$varDate = Get-Date; Invoke-Command -ComputerName 10.0.0.20      -ScriptBlock {set-date $using:varDate} -Authentication Negotiate
 
 OR
 
-Invoke-WmiMethod -ComputerName <IP> -Class win32_process    -Name Create -ArgumentList "w32tm /resync"
+Invoke-WmiMethod -ComputerName 10.0.0.20 -Class win32_process    -Name Create -ArgumentList "w32tm /resync"
 
 <br>
 Named pipes C2:
